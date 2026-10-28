@@ -1,0 +1,136 @@
+/* Оформление «Премиум» для «Доходов»: графит и шампанское (тёмная тема), жемчуг и бронза (светлая).
+   Включается атрибутом data-skin="premium" на <html>. Смысловые цвета те же, что в классике:
+   акцент — действия, коралловый — рекорды, мятный — сделано, янтарный — отклонение от плана. */
+
+:root[data-skin="premium"] {
+  --bg: #e8eaee; --surface: #ffffff; --surface-hi: #ffffff; --surface-2: #f1f2f5; --ink: #101217; --mute: #616875; --line: #dcdfe5;
+  --blue: #8a6532; --blue-hi: #a37b42; --blue-ink: #ffffff; --blue-soft: #f2e9db; --c1: #8a6532;
+  --red: #d1453a; --red-soft: #fbe7e4;
+  --yellow: #c98a10; --yellow-ink: #7a5300; --yellow-soft: #fbf0d6;
+  --green: #1f8a5b; --green-soft: #dff3e9;
+  --glow: rgba(138, 101, 50, 0.12); --glass: rgba(255, 255, 255, 0.8); --edge: rgba(16, 18, 23, 0.06);
+  --r-lg: 22px; --r: 14px; --r-sm: 10px;
+  --font: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --display: 'Unbounded', 'Manrope', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-skin="premium"]:not([data-theme="light"]) {
+    --bg: #0f1013; --surface: #17191d; --surface-hi: #1d2025; --surface-2: #23262c; --ink: #f3efe8; --mute: #8e919a; --line: #2a2d34;
+    --blue: #d9bc8c; --blue-hi: #ecd5ad; --blue-ink: #1b1408; --blue-soft: #2c261c; --c1: #d9bc8c;
+    --red: #ff7b6e; --red-soft: #3a1f1d;
+    --yellow: #f3b74f; --yellow-ink: #f3b74f; --yellow-soft: #352a14;
+    --green: #67d6a4; --green-soft: #15302a;
+    --glow: rgba(217, 188, 140, 0.16); --glass: rgba(23, 25, 29, 0.78); --edge: rgba(255, 255, 255, 0.05);
+    color-scheme: dark;
+  }
+}
+:root[data-skin="premium"][data-theme="dark"] {
+  --bg: #0f1013; --surface: #17191d; --surface-hi: #1d2025; --surface-2: #23262c; --ink: #f3efe8; --mute: #8e919a; --line: #2a2d34;
+  --blue: #d9bc8c; --blue-hi: #ecd5ad; --blue-ink: #1b1408; --blue-soft: #2c261c; --c1: #d9bc8c;
+  --red: #ff7b6e; --red-soft: #3a1f1d;
+  --yellow: #f3b74f; --yellow-ink: #f3b74f; --yellow-soft: #352a14;
+  --green: #67d6a4; --green-soft: #15302a;
+  --glow: rgba(217, 188, 140, 0.16); --glass: rgba(23, 25, 29, 0.78); --edge: rgba(255, 255, 255, 0.05);
+  color-scheme: dark;
+}
+
+[data-skin="premium"] body { padding-bottom: calc(var(--tab-h) + env(safe-area-inset-bottom) + 30px); letter-spacing: -0.005em; }
+[data-skin="premium"] body[data-view="workout"], [data-skin="premium"] body[data-view="setup"] { padding-bottom: 0; }
+
+/* Поверхности: мягкий верхний свет вместо тени */
+[data-skin="premium"] :is(.block, .hero, .tile, .facts > div, .ex, .hist, .pl, .it, .badge) {
+  background: linear-gradient(180deg, var(--surface-hi), var(--surface));
+  box-shadow: inset 0 0 0 1px var(--edge);
+}
+[data-skin="premium"] .hero {
+  padding: 24px 20px 20px;
+  background: radial-gradient(120% 90% at 100% 0%, var(--glow), transparent 60%), linear-gradient(180deg, var(--surface-hi), var(--surface));
+}
+[data-skin="premium"] .hero.live { box-shadow: inset 0 0 0 1px var(--edge), inset 0 3px 0 var(--green); }
+[data-skin="premium"] .badge { background: linear-gradient(180deg, var(--surface-hi), var(--surface)); }
+[data-skin="premium"] .badge b { color: var(--blue); }
+[data-skin="premium"] .badge.b-streak b { color: var(--green); }
+
+/* Крупные цифры и заголовки — широкий гротеск */
+[data-skin="premium"] :is(.hero h1, .h1, .result-head h1, .setup h1, .tile b, .facts b, .rest b, .h-d b, .badge b) {
+  font-family: var(--display); font-weight: 500; letter-spacing: -0.02em;
+}
+[data-skin="premium"] .hero h1 { font-size: 28px; line-height: 1.15; }
+[data-skin="premium"] .row-btns > .btn { line-height: 1.2; padding-block: 8px; }
+[data-skin="premium"] .top .h1 { font-size: 22px; }
+[data-skin="premium"] .tile b { font-size: 21px; }
+[data-skin="premium"] .facts b { font-size: 16px; }
+[data-skin="premium"] .h-d b { font-size: 18px; }
+[data-skin="premium"] .block > h2 { font-size: 15px; font-weight: 700; }
+[data-skin="premium"] .brand { font-family: var(--display); font-weight: 500; font-size: 15px; color: var(--ink); }
+
+/* Кнопки — капсулы */
+[data-skin="premium"] .btn { border-radius: 999px; font-weight: 600; }
+[data-skin="premium"] .btn.primary {
+  background: linear-gradient(180deg, var(--blue-hi), var(--blue)); color: var(--blue-ink);
+  box-shadow: 0 8px 22px var(--glow), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+[data-skin="premium"] .btn.big { min-height: 58px; }
+[data-skin="premium"] .btn.ghost { background: var(--surface-2); border-color: transparent; }
+[data-skin="premium"] .chip { border-color: transparent; background: var(--surface-2); }
+[data-skin="premium"] .chip.on { background: var(--blue-soft); color: var(--blue); }
+
+/* Тренировка */
+[data-skin="premium"] .ex { margin-bottom: 10px; }
+[data-skin="premium"] .ex.open { box-shadow: inset 0 0 0 1.5px var(--blue), 0 10px 30px var(--glow); }
+[data-skin="premium"] .ex-n { font-family: var(--display); font-weight: 500; font-size: 13px; }
+[data-skin="premium"] .set { border-top-color: var(--edge); padding: 6px 0; }
+[data-skin="premium"] .set-no { border-radius: 50%; width: 34px; height: 34px; border-color: var(--line); }
+[data-skin="premium"] .stp { border-radius: 14px; }
+[data-skin="premium"] .stp .val { font-weight: 700; }
+[data-skin="premium"] .check { border-radius: 50%; }
+[data-skin="premium"] .set.done .check { background: linear-gradient(180deg, var(--green), var(--green)); box-shadow: 0 4px 14px var(--green-soft); }
+[data-skin="premium"] .wk-progress { height: 4px; border-radius: 2px; margin-left: 0; margin-right: 0; overflow: hidden; }
+[data-skin="premium"] .wk-progress span { background: linear-gradient(90deg, var(--blue), var(--green)); }
+[data-skin="premium"] .rest { background: var(--glass); color: var(--ink); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); box-shadow: inset 0 0 0 1px var(--edge), 0 10px 30px rgba(0, 0, 0, 0.25); border-radius: 22px; }
+[data-skin="premium"] .rest button { border-radius: 999px; }
+[data-skin="premium"] .rest.over { background: var(--green); color: #0d1f16; }
+
+/* Плавающая панель вкладок */
+[data-skin="premium"] .tabbar {
+  left: max(12px, env(safe-area-inset-left, 0px)); right: max(12px, env(safe-area-inset-right, 0px));
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 10px); padding-bottom: 0;
+  border: 0; border-radius: 24px; background: var(--glass);
+  backdrop-filter: blur(20px) saturate(1.5); -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  box-shadow: inset 0 0 0 1px var(--edge), 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+[data-skin="premium"] .tabbar a { position: relative; }
+[data-skin="premium"] .tabbar a[aria-current="page"] { color: var(--blue); }
+[data-skin="premium"] .tabbar a[aria-current="page"]::after {
+  content: ''; position: absolute; bottom: 7px; width: 4px; height: 4px; border-radius: 50%; background: var(--blue);
+}
+[data-skin="premium"] .savebar { bottom: calc(var(--tab-h) + env(safe-area-inset-bottom) + 22px); border-radius: 22px; background: var(--glass); color: var(--ink); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); box-shadow: inset 0 0 0 1px var(--edge); }
+[data-skin="premium"] .savebar .btn.ghost { color: var(--ink); }
+
+/* Графики */
+[data-skin="premium"] svg .area { opacity: 0.16; }
+[data-skin="premium"] svg .bar { opacity: 0.4; }
+[data-skin="premium"] svg .bar.hi { opacity: 1; }
+[data-skin="premium"] .hb-f { background: linear-gradient(90deg, var(--blue), var(--blue-hi)); }
+
+/* Панели и уведомления */
+[data-skin="premium"] .sheet { border-radius: 28px 28px 0 0; background: var(--surface-hi); }
+[data-skin="premium"] .sheet-bg { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+[data-skin="premium"] #toast { border-radius: 999px; padding: 10px 18px; }
+[data-skin="premium"] .rate { border-radius: 16px; }
+[data-skin="premium"] .rate.on { background: linear-gradient(180deg, var(--blue-hi), var(--blue)); }
+[data-skin="premium"] .field input, [data-skin="premium"] .field select, [data-skin="premium"] .field textarea, [data-skin="premium"] .txt-out { border-radius: 14px; background: var(--surface-2); border-color: transparent; }
+[data-skin="premium"] .ach .a-record i { background: linear-gradient(180deg, #ff9a8f, var(--red)); }
+
+@media (min-width: 760px) {
+  [data-skin="premium"] .tabbar { left: 50%; right: auto; width: 696px; transform: translateX(-50%); }
+}
+[data-skin="premium"] :is(.big-num, .amount-in input, .p-a, .e-d b, .lock h1) { font-family: var(--display); font-weight: 500; letter-spacing: -0.02em; }
+[data-skin="premium"] .hero .big-num { font-size: 34px; }
+[data-skin="premium"] .amount-in input { font-size: 34px; }
+[data-skin="premium"] .p-a { font-size: 14px; }
+[data-skin="premium"] .meter span { background: linear-gradient(90deg, var(--blue), var(--blue-hi)); }
+[data-skin="premium"] .tabbar a.plus span.pl { background: linear-gradient(180deg, var(--blue-hi), var(--blue)); box-shadow: 0 6px 18px var(--glow); }
+[data-skin="premium"] .pk { background: var(--surface-hi); box-shadow: inset 0 0 0 1px var(--edge); font-family: var(--display); }
+[data-skin="premium"] .pill { background: var(--surface-2); }
+[data-skin="premium"] .srow, [data-skin="premium"] .exp li button, [data-skin="premium"] .pays li button { border-top-color: var(--edge); }

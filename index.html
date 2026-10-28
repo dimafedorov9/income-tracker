@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Доходы</title>
+  <meta name="theme-color" content="#3b3fb4">
+  <meta name="robots" content="noindex">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Доходы">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/premium.css">
+  <script>
+    // оформление и тема до первой отрисовки, чтобы не мигало
+    try {
+      var p = JSON.parse(localStorage.getItem('it_prefs') || '{}');
+      if (p.skin === 'premium') document.documentElement.dataset.skin = 'premium';
+      if (p.theme === 'light' || p.theme === 'dark') document.documentElement.dataset.theme = p.theme;
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <main id="main"></main>
+  <nav class="tabbar" aria-label="Разделы">
+    <a href="#/" data-tab="home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9h-5v-6H9v6H4z"/></svg><span>Сводка</span></a>
+    <a href="#/payments" data-tab="payments"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v3H5zM5 10.5h14v3H5zM5 17h14v3H5z"/></svg><span>Выплаты</span></a>
+    <a href="#/add" data-tab="add" class="plus" aria-label="Добавить выплату"><span class="pl" aria-hidden="true">+</span></a>
+    <a href="#/stats" data-tab="stats"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10h3v10zM10.5 20V4h3v16zM17 20v-7h3v7z"/></svg><span>Аналитика</span></a>
+    <a href="#/sources" data-tab="sources"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span>Источники</span></a>
+  </nav>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
